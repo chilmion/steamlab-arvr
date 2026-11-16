@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SteamLab AR/VR – Penyedia Steam</title>
+<meta name="description" content="Media pembelajaran interaktif AR/VR + Generative AI untuk materi Penyedia Steam (Utilitas Industri, Teknik Kimia).">
+<link rel="stylesheet" href="styles.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="app">
+  <header id="top">
+    <div class="brand"><span class="logo">♨</span><div><b>SteamLab</b><small>Utilitas Industri · Penyedia Steam</small></div></div>
+    <ol id="steps"></ol>
+    <div class="top-right">
+      <span id="clock" title="Waktu belajar">00:00</span>
+      <span id="score" title="Skor">0 poin</span>
+      <button id="btnAR" class="xr">AR</button>
+      <button id="btnVR" class="xr">VR</button>
+      <button id="btnAI" title="Pengaturan GenAI">✦ AI</button>
+    </div>
+  </header>
+  <canvas id="c"></canvas>
+  <div id="toast" role="status"></div>
+  <aside id="hud"><div id="hudBody"></div></aside>
+  <div id="loading"><div class="spin"></div><p>Memuat dunia 3D…</p></div>
+</div>
+
+<dialog id="dlgAI">
+  <form method="dialog">
+    <h3>✦ Pengaturan Generative AI</h3>
+    <p class="muted">Tanpa kunci API, aplikasi memakai <b>mesin generatif bawaan</b> (soal variatif acak berbasis tabel uap). Dengan kunci Google Gemini milikmu, soal, cerita kasus, dan umpan balik tutor dibuat langsung oleh model Gemini. Kunci hanya disimpan di browser-mu (localStorage) dan dikirim langsung ke Google, tidak ke server lain.</p>
+    <label>Gemini API key <input id="aiKey" type="password" autocomplete="off" placeholder="AIza…"></label>
+    <label>Model <input id="aiModel" value="gemini-2.5-flash"></label>
+    <div class="row"><button value="save" id="aiSave" class="primary">Simpan</button><button value="cancel">Tutup</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlgAR">
+  <div class="arhead"><b>Lihat di AR (kamera ponsel)</b><button id="arClose">✕</button></div>
+  <div id="arHost"></div>
+  <p class="muted" id="arNote"></p>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
